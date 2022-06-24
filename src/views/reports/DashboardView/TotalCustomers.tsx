@@ -25,6 +25,14 @@ const TotalCustomers: React.FC<any> = ({ className, ...rest }) => {
               1,600
             </Typography>
           </Grid>
+          <Grid item xs={9}>
+            <Typography color="textSecondary" gutterBottom variant="h6">
+              <FormattedMessage id="total.customers" tagName="span" />
+            </Typography>
+            <Typography color="textPrimary" variant="h3">
+              1,600
+            </Typography>
+          </Grid>
           <Grid item xs={3}>
             <Grid container justifyContent="right">
               <Avatar
@@ -46,11 +54,11 @@ const TotalCustomers: React.FC<any> = ({ className, ...rest }) => {
         </Box>
       </CardContent>
     </Card>
-  );
-};
+  )
+}
 
 TotalCustomers.propTypes = {
-  className: PropTypes.string
-};
+  className: PropTypes.string,
+}
 
-export default TotalCustomers;
+export default TotalCustomers

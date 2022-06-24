@@ -35,6 +35,15 @@ const TasksProgress: React.FC<any> = ({ className, ...rest }) => {
               </Avatar>
             </Grid>
           </Grid>
+          <Grid item xs={3}>
+            <Grid container justifyContent="right">
+              <Avatar
+                sx={{ bgcolor: colors.orange[600], height: 56, width: 56 }}
+              >
+                <InsertChart />
+              </Avatar>
+            </Grid>
+          </Grid>
         </Grid>
         <Box mt={3}>
           <LinearProgress value={75.5} variant="determinate" />
