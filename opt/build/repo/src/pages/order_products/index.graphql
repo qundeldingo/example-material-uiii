@@ -1,0 +1,79 @@
+query order_products($distinct_on: [order_products_select_column!], $limit: Int, $offset: Int, $order_by: [order_products_order_by!] = { updated_at: desc }, $where: order_products_bool_exp) {
+  order_products(distinct_on: $distinct_on, limit: $limit, offset: $offset, order_by: $order_by, where: $where) {
+    ...order_products_order_products
+  }
+}
+
+query order_products_by_pk($id: uuid!) {
+  order_products_by_pk(id: $id) {
+    ...order_products_by_pk_order_products
+  }
+}
+
+mutation insert_order_products($order_products: [order_products_insert_input!]!, $on_conflict: order_products_on_conflict) {
+  insert_order_products(objects: $order_products, on_conflict: $on_conflict) {
+    ...insert_order_products_order_products_mutation_response
+  }
+}
+
+mutation insert_order_products_one($order_products: order_products_insert_input!, $on_conflict: order_products_on_conflict) {
+  insert_order_products_one(object: $order_products, on_conflict: $on_conflict) {
+    ...insert_order_products_one_order_products
+  }
+}
+
+mutation update_order_products($_inc: order_products_inc_input, $order_products: order_products_set_input, $where: order_products_bool_exp!) {
+  update_order_products(_inc: $_inc, _set: $order_products, where: $where) {
+    ...update_order_products_order_products_mutation_response
+  }
+}
+
+mutation update_order_products_by_pk($_inc: order_products_inc_input, $order_products: order_products_set_input, $pk_columns: order_products_pk_columns_input!) {
+  update_order_products_by_pk(_inc: $_inc, _set: $order_products, pk_columns: $pk_columns) {
+    ...update_order_products_by_pk_order_products
+  }
+}
+
+fragment order_products_order_products on order_products {
+  id
+  name
+}
+
+fragment order_products_by_pk_order_products on order_products {
+  id
+  name
+}
+
+fragment insert_order_products_order_products_mutation_response on order_products_mutation_response {
+  returning {
+    created_at
+    id
+    is_valid
+    name
+    order_id
+    price
+    updated_at
+  }
+}
+
+fragment insert_order_products_one_order_products on order_products {
+  id
+  name
+}
+
+fragment update_order_products_order_products_mutation_response on order_products_mutation_response {
+  returning {
+    created_at
+    id
+    is_valid
+    name
+    order_id
+    price
+    updated_at
+  }
+}
+
+fragment update_order_products_by_pk_order_products on order_products {
+  id
+  name
+}

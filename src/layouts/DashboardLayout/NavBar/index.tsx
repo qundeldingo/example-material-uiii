@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
-import { useIntl } from 'react-intl';
-import PropTypes from 'prop-types';
+import React, { useEffect } from 'react'
+import { Link as RouterLink, useLocation } from 'react-router-dom'
+import { useIntl } from 'react-intl'
+import PropTypes from 'prop-types'
 import {
   Avatar,
   Box,
@@ -20,36 +20,32 @@ import {
   ShoppingBag as ShoppingBagIcon,
   User as UserIcon,
   UserPlus as UserPlusIcon,
-} from 'react-feather';
-import {
-  MenuItems,
-  calculateMenuItems
-} from '@iteria-app/component-templates'
+} from 'react-feather'
+import { MenuItems, calculateMenuItems } from '@iteria-app/component-templates'
 import * as graphqlGen from '../../../generated/graphql'
 import { Home } from 'react-feather'
 
 const user = {
   avatar: '/static/images/avatars/avatar_6.png',
   jobTitle: 'Senior Developer',
-  name: 'Katarina Smith'
-};
-
+  name: 'Katarina Smith',
+}
 
 const useStyles = makeStyles(() => ({
   mobileDrawer: {
-    width: 256
+    width: 256,
   },
   desktopDrawer: {
     width: 256,
     top: 64,
-    height: 'calc(100% - 64px)'
+    height: 'calc(100% - 64px)',
   },
   avatar: {
     cursor: 'pointer',
     width: 64,
-    height: 64
-  }
-}));
+    height: 64,
+  },
+}))
 
 const NavBar = ({ onMobileClose, openMobile }) => {
   const intl = useIntl()
@@ -58,48 +54,48 @@ const NavBar = ({ onMobileClose, openMobile }) => {
     {
       href: '/app/dashboard',
       icon: BarChartIcon,
-      title: 'Dashboard'
+      title: 'Dashboard',
     },
     {
       href: '/app/products',
       icon: ShoppingBagIcon,
-      title: 'Products'
+      title: 'Products',
     },
     {
       href: '/app/account',
       icon: UserIcon,
-      title: 'Account'
+      title: 'Account',
     },
     {
       href: '/app/settings',
       icon: SettingsIcon,
-      title: 'Settings'
+      title: 'Settings',
     },
     {
       href: '/login',
       icon: LockIcon,
-      title: 'Login'
+      title: 'Login',
     },
     {
       href: '/register',
       icon: UserPlusIcon,
-      title: 'Register'
+      title: 'Register',
     },
     {
       href: '/404',
       icon: AlertCircleIcon,
-      title: 'Error'
-    }
-  ];
-  const classes: any = useStyles();
-  const location = useLocation();
+      title: 'Error',
+    },
+  ]
+  const classes: any = useStyles()
+  const location = useLocation()
 
   useEffect(() => {
     if (openMobile && onMobileClose) {
-      onMobileClose();
+      onMobileClose()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location.pathname]);
+  }, [location.pathname])
 
   const content = (
     <Box height="100%" display="flex" flexDirection="column">
@@ -110,6 +106,9 @@ const NavBar = ({ onMobileClose, openMobile }) => {
           src={user.avatar}
           to="/app/account"
         />
+        <Typography className={classes.name} color="textPrimary" variant="h5">
+          {user.name}
+        </Typography>
         <Typography className={classes.name} color="textPrimary" variant="h5">
           {user.name}
         </Typography>
@@ -135,7 +134,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
         </List>
       </Box>
     </Box>
-  );
+  )
 
   return (
     <>
@@ -161,17 +160,17 @@ const NavBar = ({ onMobileClose, openMobile }) => {
         </Drawer>
       </Hidden>
     </>
-  );
-};
+  )
+}
 
 NavBar.propTypes = {
   onMobileClose: PropTypes.func,
-  openMobile: PropTypes.bool
-};
+  openMobile: PropTypes.bool,
+}
 
 NavBar.defaultProps = {
-  onMobileClose: () => { },
-  openMobile: false
-};
+  onMobileClose: () => {},
+  openMobile: false,
+}
 
-export default NavBar;
+export default NavBar
